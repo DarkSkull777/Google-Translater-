@@ -20,7 +20,7 @@ app = Client(
 
 @app.on_message(filters.private & filters.command(['start']))
 async def start(client, message):
-	await message.reply_text(text =f"Hello **{message.from_user.first_name }** \n\n __I am simple Google Translater Bot \n I can translate any language to you selected language__",reply_to_message_id = message.message_id ,parse_mode="markdown", reply_markup=InlineKeyboardMarkup([ [                    InlineKeyboardButton("Support 🇮🇳" ,url="https://t.me/lntechnical") ],               [InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]   ]  ) )
+	await message.reply_text(text =f"Halo **{message.from_user.first_name }** \n\n __Saya Bot Google Terjemahan sederhana \n Saya dapat menerjemahkan bahasa apa pun ke bahasa yang Anda pilih__",reply_to_message_id = message.message_id ,parse_mode="markdown", reply_markup=InlineKeyboardMarkup([ [                    InlineKeyboardButton("Support 🇮🇳" ,url="https://t.me/lntechnical") ],               [InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]   ]  ) )
                   
 
 
@@ -31,8 +31,8 @@ async def echo(client, message):
  
  keybord1= InlineKeyboardMarkup( [
         [ 
-            InlineKeyboardButton("Afrikaans", callback_data='af'),
-             InlineKeyboardButton("Albanian", callback_data='sq'),
+            InlineKeyboardButton("Indonesian", callback_data='id'),
+             InlineKeyboardButton("English", callback_data='en'),
             InlineKeyboardButton("Amharic",callback_data ='am'),
         ],
         [   InlineKeyboardButton("Arabic", callback_data='ar'),
@@ -60,7 +60,7 @@ async def echo(client, message):
 	]
 	] )
 	
- await  message.reply_text("Select language 👇",reply_to_message_id = message.message_id, reply_markup = keybord1) 
+ await  message.reply_text("Pilih bahasa 👇",reply_to_message_id = message.message_id, reply_markup = keybord1) 
 
 
 @app.on_callback_query()
@@ -219,7 +219,7 @@ async def translate_text(bot,update):
   
   
   keybord2= InlineKeyboardMarkup([
-           [InlineKeyboardButton("English",callback_data = "en"),
+           [InlineKeyboardButton("Afrikaans",callback_data = "af"),
            InlineKeyboardButton("Estonian",callback_data = "et"),
            InlineKeyboardButton("Finnish",callback_data = "fi")
            ],
@@ -240,7 +240,7 @@ async def translate_text(bot,update):
            InlineKeyboardButton("Icelandic",callback_data = "is")
            ],
            [InlineKeyboardButton("Igbo",callback_data = "ig"),
-           InlineKeyboardButton("Indonesian",callback_data = "id"),
+           InlineKeyboardButton("Albanian",callback_data = "sq"),
            InlineKeyboardButton("Irish",callback_data = "ga")
            ],
            [InlineKeyboardButton("<--- Back",callback_data = "page1"),
@@ -254,17 +254,17 @@ async def translate_text(bot,update):
   tr_text = update.message.reply_to_message.text
   cb_data = update.data
   if cb_data== "page2":
-  	await update.message.edit("Select language 👇",reply_markup = keybord2)
+  	await update.message.edit("Pilih bahasa 👇",reply_markup = keybord2)
   elif cb_data == "page1":
-  	await update.message.edit("Select language 👇",reply_markup =keybord1)
+  	await update.message.edit("Pilih bahasa 👇",reply_markup =keybord1)
   elif cb_data =="page3":
-  	await update.message.edit("Select language 👇",reply_markup =keybord3)
+  	await update.message.edit("Pilih bahasa 👇",reply_markup =keybord3)
   elif cb_data == "page4":
-  	await update.message.edit("Select language 👇",reply_markup =keybord4)
+  	await update.message.edit("Pilih bahasa 👇",reply_markup =keybord4)
   elif cb_data =="page5":
-  	await update.message.edit("Select language 👇",reply_markup =keybord5)
+  	await update.message.edit("Pilih bahasa 👇",reply_markup =keybord5)
   elif cb_data =="page6":
-  	await update.message.edit("Select language 👇",reply_markup =keybord6)
+  	await update.message.edit("Pilih bahasa 👇",reply_markup =keybord6)
   else :
        translator = Translator()  
        translation = translator.translate(tr_text,dest=cb_data) 
